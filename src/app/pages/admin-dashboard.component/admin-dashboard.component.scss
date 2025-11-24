@@ -1,0 +1,69 @@
+.admin .card {
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.img-preview {
+  max-width: 120px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh; /* ensure sidebar covers full height */
+}
+
+.admin-content {
+  margin-left: 240px; /* Same width as sidebar */
+  padding: 20px;
+  overflow-y: auto;
+  height: calc(100vh - 57px); /* Full height minus header */
+}
+
+
+/* adjust margin depending on sidebar width */
+.admin-content {
+  margin-left: 240px; /* sidebar width */
+}
+
+.sidebar.collapsed + .admin-content {
+  margin-left: 70px; /* collapsed sidebar width */
+}
+
+/* Keep your existing styles for .admin, .img-preview, etc. */
+.admin .card {
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.img-preview {
+  max-width: 120px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+
+/* Optional: adjust margin when sidebar is collapsed */
+.sidebar.collapsed + .admin-content {
+  margin-left: 70px;
+}
+
+
+input[type="number"]::placeholder {
+  opacity: 1 !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .text-end {
+    text-align: center !important;
+  }
+
+  .text-nowrap button {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+}

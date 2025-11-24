@@ -1,0 +1,182 @@
+<!-- FILTER PANEL -->
+<div class="filter-panel shadow-sm fade-slide">
+
+  <!-- Search -->
+  <div class="input-group search-box mb-3">
+    <span class="input-group-text bg-light ripple-target">
+      <i class="bi bi-search"></i>
+    </span>
+    <input 
+      type="text"
+      class="form-control"
+      placeholder="Search items..."
+      [(ngModel)]="searchText"
+      (ngModelChange)="currentPage = 1"
+    />
+  </div>
+
+  <!-- Category Chips -->
+  <div class="chips-wrapper mb-3">
+    <span class="chip ripple-target"
+          [class.active]="selectedCategory==''"
+          (click)="selectedCategory=''; currentPage=1">
+      All
+    </span>
+
+    <span class="chip ripple-target"
+          [class.active]="selectedCategory=='Veg'"
+          (click)="selectedCategory='Veg'; currentPage=1">
+      🌱 Veg
+    </span>
+
+    <span class="chip ripple-target"
+          [class.active]="selectedCategory=='Non-Veg'"
+          (click)="selectedCategory='Non-Veg'; currentPage=1">
+      🍗 Non-Veg
+    </span>
+
+    <span class="chip ripple-target"
+          [class.active]="selectedCategory=='BreakFast'"
+          (click)="selectedCategory='BreakFast'; currentPage=1">
+      🍳 Break-Fast
+    </span>
+
+       <span class="chip ripple-target"
+          [class.active]="selectedCategory=='Lunch'"
+          (click)="selectedCategory='Lunch'; currentPage=1">
+      🍽️ Lunch
+    </span>
+
+     <span class="chip ripple-target"
+          [class.active]="selectedCategory=='Juice'"
+          (click)="selectedCategory='Juice'; currentPage=1">
+      🥤 Juice
+    </span>
+
+     <span class="chip ripple-target"
+          [class.active]="selectedCategory=='ChineeseItem'"
+          (click)="selectedCategory='ChineeseItem'; currentPage=1">
+      🍜 Chineese Item
+    </span>
+  </div>
+
+   <div class="order-buttons">
+  <button 
+    class="order-btn dine" 
+    [class.selected]="selectedOrder === 'dine'" 
+    (click)="selectOrder('dine')">
+    🍽️ Dine-In
+  </button>
+
+  <button 
+    class="order-btn delivery" 
+    [class.selected]="selectedOrder === 'delivery'" 
+    (click)="selectOrder('delivery')">
+    🚚 Delivery
+  </button>
+
+  <button 
+    class="order-btn pickup" 
+    [class.selected]="selectedOrder === 'pickup'" 
+    (click)="selectOrder('pickup')">
+    🛍️ Pickup
+  </button>
+</div>
+
+<!-- Hidden radio buttons if you need real form submission -->
+<input type="radio" name="order" value="dine" [checked]="selectedOrder === 'dine'" hidden>
+<input type="radio" name="order" value="delivery" [checked]="selectedOrder === 'delivery'" hidden>
+<input type="radio" name="order" value="pickup" [checked]="selectedOrder === 'pickup'" hidden>
+
+
+  <!-- Filters -->
+  <div class="row g-3 fade-in">
+    <div class="col-md-3">
+      <input type="number" class="form-control" placeholder="Min Price" [(ngModel)]="minPrice">
+    </div>
+
+    <div class="col-md-3">
+      <input type="number" class="form-control" placeholder="Max Price" [(ngModel)]="maxPrice">
+    </div>
+
+    <div class="col-md-3">
+      <select class="form-select" [(ngModel)]="sortOrder">
+        <option value="">Sort By</option>
+        <option value="asc">Low → High</option>
+        <option value="desc">High → Low</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <select class="form-select" [(ngModel)]="availabilityFilter">
+        <option value="">All Items</option>
+        <option value="in">In Stock</option>
+        <option value="out">Out of Stock</option>
+      </select>
+    </div>
+  </div>
+
+</div>
+
+<div class="pos-container">
+
+  <!-- MENU -->
+  <div class="menu-section">
+    <h3 class="fw-bold mt-3 fade-in">🍽️ Menu Items</h3>
+
+    <div class="row g-4 mt-1">
+      <div *ngFor="let item of paginatedItems()" class="col-lg-3 col-md-4 col-sm-6 fade-up">
+
+        <div class="card item-card shadow-sm">
+
+          <div class="image-container">
+            <img 
+              [src]="item.imageUrl || 'assets/default.jpg'"
+              (error)="onImageError($event)"
+              class="menu-img"
+            />
+            <span *ngIf="item.quantityAvailable === 0" class="stock-badge">
+              Out of Stock
+            </span>
+          </div>
+
+          <div class="card-body">
+            <h6 class="fw-bold">{{ item.name }}</h6>
+            <p class="price">₹{{ item.price }}</p>
+
+            <div class="qty-box">
+              <button class="btn minus ripple-target" 
+                      [disabled]="item.quantityAvailable===0"
+                      (click)="decreaseQuantity(item)">–</button>
+
+              <span>{{ item.quantity || 0 }}</span>
+
+              <button class="btn plus ripple-target"
+                      [disabled]="item.quantityAvailable===0"
+                      (click)="increaseQuantity(item)">+</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container fade-in">
+      <button class="page-btn ripple-target" [disabled]="currentPage===1" (click)="prevPage()">← Previous</button>
+      <span class="page-info">Page {{currentPage}} of {{totalPages}}</span>
+      <button class="page-btn ripple-target" [disabled]="currentPage===totalPages" (click)="nextPage()">Next →</button>
+    </div>
+
+  </div>
+
+  <!-- Floating Cart -->
+  <div class="cart-float pop-in" *ngIf="cartItemCount > 0">
+    <span class="fw-bold">🛒 {{ cartItemCount }} item(s) in cart</span>
+    <button class="btn btn-success ripple-target" *ngIf="selectedOrder != 'dine'" (click)="viewCart()">View Cart →</button>
+    <button class="btn btn-success ripple-target" *ngIf="selectedOrder === 'dine'" (click)="viewKDS()">View KDS →</button>
+  </div>
+
+</div>
+

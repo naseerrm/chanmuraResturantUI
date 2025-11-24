@@ -1,0 +1,71 @@
+/* Modal Enhancements */
+#billModal .modal-content {
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#billModal .modal-header {
+  border-bottom: 2px solid #444;
+  font-size: 1.1rem;
+}
+
+#billModal .modal-title i {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+#billModal .table {
+  margin-bottom: 0;
+}
+
+#billModal .summary-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dashed #ddd;
+  font-size: 0.95rem;
+}
+
+#billModal .summary-line.grand-total {
+  border-top: 2px solid #000;
+  font-size: 1.1rem;
+}
+
+#billModal .qr-code {
+  border-radius: 12px;
+}
+
+#billModal .purchaser-info label {
+  font-weight: 500;
+}
+
+#billModal .form-control,
+#billModal .form-select {
+  border-radius: 8px;
+}
+
+#billModal .btn-primary {
+  border-radius: 8px;
+  min-width: 140px;
+}
+
+#billModal .btn-secondary {
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+#billModal .table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+#billModal .table th, 
+#billModal .table td {
+  vertical-align: middle;
+}
+
+#billModal .modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+}

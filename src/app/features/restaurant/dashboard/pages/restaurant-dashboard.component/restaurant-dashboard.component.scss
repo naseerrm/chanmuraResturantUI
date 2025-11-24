@@ -1,0 +1,82 @@
+host { display:block; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; padding:16px; background:#f7fafc; }
+.header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px }
+h1{ margin:0; font-size:20px }
+.muted{ color:#6b7280 }
+.filters .chip{ margin-left:6px; padding:6px 10px; border-radius:8px; border:1px solid #e5e7eb; background:white }
+
+
+.kpis{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px }
+.card{ background:white; padding:12px; border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.04) }
+.card small{ color:#6b7280 }
+.big{ font-size:18px; font-weight:700; margin-top:8px }
+.sub{ color:#9ca3af }
+.positive{ color:#16a34a }
+.negative{ color:#dc2626 }
+
+
+.main{ display:grid; grid-template-columns:2fr 1fr; gap:12px }
+.left{ background:white; padding:12px; border-radius:8px }
+.right{ background:white; padding:12px; border-radius:8px }
+
+
+.sparkline{ display:flex; align-items:flex-end; gap:6px; height:80px; margin:8px 0 }
+.sparkline .bar{ flex:1; background:linear-gradient(180deg,#6366f1,#818cf8); border-radius:4px }
+
+
+.tx-table{ width:100%; border-collapse:collapse; margin-top:8px }
+.tx-table th{ text-align:left; padding:6px; color:#6b7280; font-size:12px }
+.tx-table td{ padding:8px 6px; border-top:1px solid #eef2f7 }
+
+
+.actions{ margin-top:12px; display:flex; flex-direction:column; gap:8px }
+.primary{ background:#4f46e5; color:white; padding:8px; border-radius:6px; border:none }
+.outline{ background:white; border:1px solid #e5e7eb; padding:8px; border-radius:6px }
+
+
+footer.small{ margin-top:12px }
+
+
+/* responsive */
+@media (max-width:800px){ .main{ grid-template-columns:1fr } .kpis{ grid-template-columns:repeat(2,1fr) } }
+
+/* CSS for order Type based on Dine-in, Delivery and Pickup */
+.order-type-wrapper {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.order-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.order-btn {
+  padding: 20px 40px;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.order-btn:hover {
+  transform: scale(1.05);
+}
+
+.dine {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.delivery {
+  background: #28a745;
+  color: #fff;
+}
+
+.pickup {
+  background: #ffc107;
+  color: #000;
+}

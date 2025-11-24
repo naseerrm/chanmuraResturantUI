@@ -1,0 +1,87 @@
+<div class="dashboard">
+<header class="header">
+<div>
+<h1>Restaurant Dashboard</h1>
+<p class="muted">Date: {{ today }}</p>
+</div>
+
+
+<div class="filters">
+<button class="chip">Today</button>
+<button class="chip">This Week</button>
+<button class="chip">This Month</button>
+</div>
+</header>
+<section class="kpis">
+<div class="card">
+<small>Revenue</small>
+<div class="big">{{ metrics.revenue | currency:'INR':'symbol':'1.0-0' }}</div>
+<small class="sub">Compared to yesterday: +8%</small>
+</div>
+
+
+<div class="card">
+<small>Expense</small>
+<div class="big">{{ metrics.expense | currency:'INR':'symbol':'1.0-0' }}</div>
+<small class="sub">Fixed + Variable</small>
+</div>
+
+
+<div class="card">
+<small>{{ profitLabel }}</small>
+<div class="big" [class.positive]="profit>=0" [class.negative]="profit<0">{{ profit  }}</div>
+<small class="sub">{{ profit >= 0 ? 'Net gain' : 'Net loss' }}</small>
+</div>
+
+
+<div class="card">
+<small>Orders</small>
+<div class="big">{{ metrics.orders }}</div>
+<small class="sub">Online + Dine-in</small>
+</div>
+</section>
+<main class="main">
+<div class="left">
+<h3>Sales Trend (Last 7 days)</h3>
+<div class="sparkline">
+<div *ngFor="let v of trend" class="bar" [style.height.%]="v"></div>
+</div>
+
+
+<h4>Transactions</h4>
+<table class="tx-table">
+<thead>
+<tr><th>Date</th><th>Order ID</th><th>Amount</th><th>Type</th><th>Payment</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr *ngFor="let t of transactions">
+<td>{{t.date}}</td>
+<td>{{t.id}}</td>
+<td>{{t.amount | currency:'INR':'symbol':'1.0-0'}}</td>
+<td>{{t.type}}</td>
+<td>{{t.payment}}</td>
+<td>{{t.status}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<aside class="right">
+<h3>Top Selling Items</h3>
+<ol>
+<li *ngFor="let it of topItems">{{it.name}} — <strong>{{it.qty}}</strong></li>
+</ol>
+
+
+<div class="actions">
+<button class="primary">Add Sale</button>
+<button class="outline">Add Expense</button>
+<button class="outline">Export CSV</button>
+</div>
+</aside>
+</main>
+
+
+<footer class="muted small">Built with ❤️ — dummy data. Hook up APIs to replace values.</footer>
+</div>
