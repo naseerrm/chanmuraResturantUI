@@ -1,0 +1,20 @@
+<div class="container mt-3">
+  <h3>Menu</h3>
+  <div class="row">
+    <div *ngFor="let item of menuItems" class="col-md-4 mb-3">
+      <div class="card h-100 p-2">
+        <img [src]="'assets/images/' + item.imageUrl" class="card-img-top" [alt]="item.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">Price: ₹{{ item.price }}</p>
+
+          <div class="d-flex align-items-center">
+            <button class="btn btn-outline-secondary btn-sm me-2" (click)="decreaseQuantity(item)">-</button>
+            <span>{{ item.quantity || 0 }}</span>
+            <button class="btn btn-outline-secondary btn-sm ms-2" (click)="increaseQuantity(item)">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
