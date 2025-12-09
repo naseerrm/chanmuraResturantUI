@@ -1,0 +1,54 @@
+/* ---------- CATEGORY LABEL ---------- */
+.table-category {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ---------- GRID LAYOUT ---------- */
+.table-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+/* ---------- TABLE BOX ---------- */
+.table-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px 10px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  transition: 0.3s ease;
+  font-weight: 600;
+}
+
+/* Hover effect ONLY for free tables */
+.table-box.free:hover {
+  background: #0d6efd;
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+/* ---------- FREE STATUS ---------- */
+.table-box.free {
+  background-color: #4caf50 !important; /* green */
+  color: #fff;
+}
+
+/* ---------- OCCUPIED STATUS ---------- */
+.table-box.occupied {
+  background-color: #d9534f !important; /* red */
+  color: #fff;
+  cursor: not-allowed;
+  opacity: 0.85;
+  transform: none !important;
+}
+
+/* Prevent hover from affecting occupied tables */
+.table-box.occupied:hover {
+  background-color: #d9534f !important;
+  transform: none !important;
+  opacity: 0.9;
+}

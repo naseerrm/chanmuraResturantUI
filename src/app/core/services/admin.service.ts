@@ -11,11 +11,15 @@ export class AdminService {
 
   addMenuItem(item: MenuItem) {
     const items = this.menuItems();
-    item.id = items.length > 0 ? Math.max(...items.map(i => i.id)) + 1 : 1;
+    // compute next id as a string (existing ids may be strings)
+    const nextId = items.length > 0
+      ? (Math.max(...items.map(i => Number(i.id))) + 1).toString()
+      : '1';
+    item.id = nextId;
     this.menuItems.set([...items, item]);
   }
 
-  updateMenuItemQuantity(id: number, quantity: number) {
+  updateMenuItemQuantity(id: string, quantity: number) {
     const items = this.menuItems();
     const index = items.findIndex(i => i.id === id);
     if (index >= 0) {
@@ -24,7 +28,7 @@ export class AdminService {
     }
   }
 
-  decreaseQuantity(id: number, purchased: number) {
+  decreaseQuantity(id: string, purchased: number) {
     const items = this.menuItems();
     const index = items.findIndex(i => i.id === id);
     if (index >= 0) {

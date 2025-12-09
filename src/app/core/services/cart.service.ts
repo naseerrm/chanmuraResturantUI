@@ -11,36 +11,64 @@ export interface CartItem {
 @Injectable({ providedIn: 'root' })
 export class CartService {
   private cartItems = new BehaviorSubject<CartItem[]>([]);
-  cartItems$ = this.cartItems.asObservable();
+    private cartCount = new BehaviorSubject<number>(0);
 
-  addToCart(menuItem: MenuItem, quantity: number = 1) {
-    const items = this.cartItems.value;
-    const existing = items.find(i => i.menuItem.id === menuItem.id);
+    cartItems$ = this.cartItems.asObservable();
+    cartCount$ = this.cartCount.asObservable();
 
-    if (existing) {
-      existing.quantity += quantity;
+ addToCart(menuItem: MenuItem, quantity: number = 1) {
+  const items = this.cartItems.value;
+  const existing = items.find(i => i.menuItem.id === menuItem.id);
 
-      if (existing.quantity <= 0) {
-        this.removeFromCart(menuItem.id);
-        return;
-      }
+  // If item already exists in cart
+  if (existing) {
+    existing.quantity += quantity;
 
-      existing.totalPrice = existing.menuItem.price * existing.quantity;
-    } else if (quantity > 0) {
-      items.push({ menuItem, quantity, totalPrice: menuItem.price * quantity });
+    // If quantity becomes zero or negative → remove item
+    if (existing.quantity <= 0) {
+      this.removeFromCart(menuItem.id!);
+      return;
     }
 
-    // ✅ Only BehaviorSubject has .next()
-    this.cartItems.next([...items]);
+    // Recalculate total
+    existing.totalPrice = existing.quantity * existing.menuItem.price;
+  }
+  else if (quantity > 0) {
+    // If item is new → add to cart
+    items.push({
+      menuItem,
+      quantity,
+      totalPrice: menuItem.price * quantity
+    });
+
+    //   // 🔥 Update cart count
+    // const total = items.reduce((sum, x) => sum + (x.quantity || 0), 0);
+    // this.cartCount.next(total); // Broadcast to header
+    this.updateCartCount();
   }
 
-  removeFromCart(menuItemId: number) {
+
+  // Update BehaviorSubject
+  this.cartItems.next([...items]);
+}
+
+
+  updateCartCount() {
+    const items = this.cartItems.value;
+    const total = items.reduce((sum, x) => sum + (x.quantity || 0), 0);
+    this.cartCount.next(total); // Broadcast to header
+  }
+
+
+  removeFromCart(menuItemId: string) {
     const items = this.cartItems.value.filter(i => i.menuItem.id !== menuItemId);
+    this.updateCartCount();
     this.cartItems.next([...items]);
   }
 
   clearCart() {
     this.cartItems.next([]);
+    this.updateCartCount();
   }
 
   getTotalAmount(): number {

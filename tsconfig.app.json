@@ -11,5 +11,9 @@
   ],
   "exclude": [
     "src/**/*.spec.ts"
-  ]
+  ],
+  "files": [
+  "src/typings/qrcode.d.ts"
+]
+
 }

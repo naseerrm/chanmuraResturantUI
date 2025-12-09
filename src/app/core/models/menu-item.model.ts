@@ -1,5 +1,5 @@
 export interface MenuItem {
-  id: number;
+  id?: string;                 // Firestore document id (string)
   name: string;
   description: string;
   price: number;

@@ -1,34 +1,107 @@
-<h2 class="my-3">Cart</h2>
+<!-- <h2 class="my-3">Cart</h2>
 <div *ngIf="cartItems.length === 0">Your cart is empty</div>
 
-<table *ngIf="cartItems.length > 0" class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Total</th>
-      <th>#</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of cartItems">
-      <td>{{item.menuItem.name}}</td>
-      <td>{{item.menuItem.price}}</td>
-      <td>{{item.quantity}}</td>
-      <td>{{item.totalPrice}}</td>
-      <td> <div class="d-flex align-items-center">
-            <button class="btn btn-outline-secondary btn-sm me-2" (click)="decreaseQuantity(item.menuItem)">-</button>
+<div class="d-none d-md-block">
+  <table *ngIf="cartItems.length > 0" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>#</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems">
+        <td>{{ item.menuItem.name }}</td>
+        <td>{{ item.menuItem.price }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.totalPrice }}</td>
+        <td>
+          <div class="d-flex align-items-center">
+            <button class="btn btn-outline-secondary btn-sm me-2" (click)="decreaseQuantity(item)">-</button>
             <span>{{ item.quantity || 0 }}</span>
-            <button class="btn btn-outline-secondary btn-sm ms-2" (click)="increaseQuantity(item.menuItem)">+</button>
-          </div></td>
-      <td>
-        <button class="btn btn-sm btn-danger" (click)="remove(item)">Remove</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+            <button class="btn btn-outline-secondary btn-sm ms-2" (click)="increaseQuantity(item)">+</button>
+          </div>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="remove(item)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<h4 *ngIf="cartItems.length > 0">Total Amount: ₹{{totalAmount}}</h4>
-<button class="btn btn-success" *ngIf="cartItems.length > 0" (click)="placeOrder()">Place Order</button>
+<div class="d-md-none">
+  <div *ngFor="let item of cartItems" class="card mb-2 shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title">{{ item.menuItem.name }}</h5>
+
+      <p class="mb-1"><strong>Price:</strong> ₹{{ item.menuItem.price }}</p>
+      <p class="mb-1"><strong>Total:</strong> ₹{{ item.totalPrice }}</p>
+
+      <div class="d-flex align-items-center mb-2">
+        <button class="btn btn-outline-secondary btn-sm me-2" (click)="decreaseQuantity(item)">-</button>
+        <span>{{ item.quantity }}</span>
+        <button class="btn btn-outline-secondary btn-sm ms-2" (click)="increaseQuantity(item)">+</button>
+      </div>
+
+      <button class="btn btn-danger btn-sm w-100" (click)="remove(item)">Remove</button>
+    </div>
+  </div>
+</div>
+
+<h4 *ngIf="cartItems.length > 0">Total Amount: ₹{{ totalAmount }}</h4>
+
+<div *ngIf="cartItems.length > 0">
+  <label>Purchaser Name:</label>
+  <input type="text" [(ngModel)]="purchaserName" placeholder="Enter purchaser name" class="form-control mb-3" />
+
+  <label>Mobile Number:</label>
+  <input type="number" [(ngModel)]="mobileNumber" maxlength="10" pattern="[0-9]{10}" placeholder="Enter mobile number" class="form-control mb-3" />
+</div>
+
+<div class="col-12 mt-3 text-end">
+        <button class="btn btn-primary" *ngIf="cartItems.length > 0" (click)="confirmOrder()" [disabled]="loading()">
+          {{ loading() ? 'Saving...' : 'Place Order' }}
+        </button>
+      </div>
+
+<div id="printArea" style="display:none;"></div>
+ -->
+
+  <!-- CART SECTION -->
+  <div class="cart-section shadow-lg" *ngIf="cartItems.length > 0">
+
+    <h5 class="fw-bold mb-3">🛒 Your Cart</h5>
+
+    <div *ngFor="let cartItem of cartItems" class="cart-item">
+      <div>
+        <p class="fw-bold">{{ cartItem.menuItem.name }}</p>
+        <p class="text-muted small">₹{{ cartItem.menuItem.price }}</p>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <button class="btn btn-sm btn-light" (click)="decreaseQuantity(cartItem)">–</button>
+        <span class="mx-2">{{ cartItem.quantity }}</span>
+        <button class="btn btn-sm btn-light" (click)="increaseQuantity(cartItem)">+</button>
+      </div>
+    </div>
+
+    <div class="cart-summary mt-4">
+      <div class="d-flex justify-content-between fw-bold">
+        <span>Total</span><span>₹{{ cartTotal }}</span>
+      </div>
+
+      <button class="btn btn-success w-100 mt-3" (click)="billSummary.checkout()">Checkout →</button>
+    </div>
+
+  </div>
+<app-bill-summary
+  [cartItems]="cartItems"
+  [upiQrCode]="upiQrCode"
+  (orderConfirmed)="handleOrderConfirmed($event)">
+</app-bill-summary>
+

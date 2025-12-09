@@ -1,0 +1,31 @@
+<h2 class="fw-bold mb-3">Select Table</h2>
+
+<!-- AC Tables -->
+<div class="table-category">AC Tables</div>
+
+<div class="table-grid">
+  <div
+    *ngFor="let table of acTables"
+    class="table-box ripple-target"
+    [ngClass]="table.status"
+    (click)="openPOS(table)"
+  >
+    <i class="bi bi-table"></i>
+    <span>{{ table.name }}</span>
+  </div>
+</div>
+
+<!-- Non-AC Tables -->
+<div class="table-category mt-4">Non-AC Tables</div>
+
+<div class="table-grid">
+  <div
+    *ngFor="let table of nonAcTables"
+    class="table-box ripple-target"
+    [ngClass]="table.status"
+    (click)="openPOS(table)"
+  >
+    <i class="bi bi-table"></i>
+    <span>{{ table.name }}</span>
+  </div>
+</div>

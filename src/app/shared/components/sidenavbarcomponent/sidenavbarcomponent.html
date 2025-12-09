@@ -1,0 +1,14 @@
+<div class="sidebar" [class.collapsed]="collapsed">
+  <button class="toggle-btn" (click)="toggle()">
+    ☰
+  </button>
+
+<nav>
+  <a *ngFor="let item of sidebarItems" 
+     [routerLink]="item.route" routerLinkActive="active">
+    <span class="icon">{{item.icon}}</span>
+    <span class="text">{{item.label}}</span>
+  </a>
+</nav>
+
+</div>

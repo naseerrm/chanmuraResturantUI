@@ -17,3 +17,19 @@ export interface Order {
   customerName?: string;
   orderTime: Date;
 }
+
+
+export interface OrderRecord {
+  id?: string; // Firestore document ID
+  orderId: number,
+  customerName: string;
+  mobileNumber: string | number;
+  items: {
+    id?: string;
+    name: string;
+    price: number;
+    quantity: number;
+  }[];
+  totalAmount: number;
+  orderTime: Date;
+}

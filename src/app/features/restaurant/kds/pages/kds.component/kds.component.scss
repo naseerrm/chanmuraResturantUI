@@ -1,0 +1,104 @@
+.kds-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.kds-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: fadeUp 0.4s ease;
+}
+
+.kds-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.table-label {
+  background: #0d6efd;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.time-since {
+  font-size: 13px;
+  color: #888;
+}
+
+.kds-item {
+  padding: 12px;
+  border-radius: 10px;
+  background: #f8f8f8;
+  margin-bottom: 10px;
+}
+
+.item-name {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.qty {
+  margin-left: 6px;
+  font-size: 13px;
+  color: #444;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-select {
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Status colors */
+.status-badge {
+  padding: 4px 10px;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.status-badge.pending {
+  background: #dc3545;
+}
+
+.status-badge.preparing {
+  background: #ffc107;
+  color: black;
+}
+
+.status-badge.ready {
+  background: #28a745;
+}
+
+/* Button */
+.btn-ready {
+  margin-top: 12px;
+  width: 100%;
+  border: none;
+  background: #198754;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

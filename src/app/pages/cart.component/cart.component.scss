@@ -1,3 +1,137 @@
-.table {
+// .table {
+//   margin-top: 20px;
+// }
+
+// .card-title {
+//   font-size: 1.1rem;
+//   font-weight: bold;
+// }
+// @media print {
+//   body * {
+//     visibility: hidden;
+//   }
+//   #printArea, #printArea * {
+//     visibility: visible;
+//   }
+//   #printArea {
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//   }
+// }
+/* ------------------------------
+   CART SECTION
+------------------------------ */
+.cart-section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.cart-section h5 {
+  color: #222;
+}
+
+/* ------------------------------
+   CART ITEMS
+------------------------------ */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  border: 1px solid #e3e3e3;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.cart-item p {
+  margin: 0;
+}
+
+/* Quantity Buttons */
+.cart-item button {
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 5px !important;
+}
+
+/* ------------------------------
+   CART SUMMARY
+------------------------------ */
+.cart-summary {
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e3e3e3;
   margin-top: 20px;
+}
+
+.cart-summary button {
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* ------------------------------
+   BILL SUMMARY MODAL
+------------------------------ */
+.modal-header {
+  background: #212529 !important;
+  color: white;
+}
+
+.modal-content {
+  border-radius: 12px !important;
+}
+
+/* Table styling */
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+/* ------------------------------
+   SUMMARY LINES INSIDE MODAL
+------------------------------ */
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dashed #d2d2d2;
+  font-size: 15px;
+}
+
+.summary-line:last-child {
+  border-bottom: none;
+}
+
+/* UPI QR */
+.modal-body img {
+  border: 2px solid #ddd;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 576px) {
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cart-item .d-flex {
+    margin-top: 10px;
+  }
+
+  .modal-dialog {
+    margin: 10px;
+  }
 }

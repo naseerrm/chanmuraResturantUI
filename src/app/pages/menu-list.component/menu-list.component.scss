@@ -1,4 +1,163 @@
-.card {
+/* ----------------------------------------------------
+  STICKY FILTER PANEL
+---------------------------------------------------- */
+.sticky-filter-panel {
+  // position: sticky;
+  top: 70px;
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  z-index: 200;
+  border: 1px solid #eee;
+}
+
+/* Search Box */
+.search-box input {
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ----------------------------------------------------
+  CATEGORY CHIPS
+---------------------------------------------------- */
+.chips-wrapper {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: 6px 14px;
+  background: #f5f5f5;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.chip.active {
+  background: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+}
+
+/* ----------------------------------------------------
+  MENU ITEMS
+---------------------------------------------------- */
+.item-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.item-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Image */
+.image-container {
+  position: relative;
+}
+
+.menu-img {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Stock Badge */
+.stock-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255,0,0,0.85);
+  padding: 4px 10px;
+  font-size: 13px;
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* Price */
+.price {
+  font-size: 15px;
+  font-weight: bold;
+  color: #444;
+}
+
+/* ----------------------------------------------------
+  QUANTITY BUTTONS
+---------------------------------------------------- */
+.qty-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty-box .btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  padding: 0;
+  font-weight: bold;
+}
+
+.minus { background: #eee; }
+.plus { background: #0d6efd; color: #fff; }
+
+/* ----------------------------------------------------
+  PAGINATION
+---------------------------------------------------- */
+.pagination-container {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.page-btn {
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 6px;
+  margin: 0 8px;
+}
+
+.page-btn:disabled {
+  background: #ccc;
+}
+
+.page-info {
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+/* ----------------------------------------------------
+  FLOATING CART BAR
+---------------------------------------------------- */
+.cart-float {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  padding: 14px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3000;
+}
+
+/* ----------------------------------------------------
+  MOBILE
+---------------------------------------------------- */
+@media (max-width: 576px) {
+  .menu-img {
+    height: 150px;
+  }
+  .sticky-filter-panel {
+    top: 55px;
+  }
 }

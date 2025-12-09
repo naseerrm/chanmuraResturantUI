@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CartItem } from './cart.service';
+import { CartItem, CartService } from './cart.service';
 import { Order, OrderItem, OrderStatus } from '../models/order.model';
 
 @Injectable({
@@ -8,6 +8,8 @@ import { Order, OrderItem, OrderStatus } from '../models/order.model';
 export class OrderService {
   private orders: Order[] = [];
   private nextId = 1;
+
+  constructor(private cartService : CartService) { } 
 
   createOrder(cartItems: CartItem[], tableNumber?: string, customerName?: string) {
     const items: OrderItem[] = cartItems.map(ci => ({
@@ -29,6 +31,7 @@ export class OrderService {
     };
 
     this.orders.push(order);
+    this.cartService.updateCartCount();
     return order;
   }
 
