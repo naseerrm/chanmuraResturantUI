@@ -20,21 +20,21 @@
   <div class="row text-center mt-3">
 
   <div class="col-md-3">
-    <div class="card shadow-sm p-3">
+    <div class="card shadow-sm p-3 revenue-card">
       <h5>Revenue</h5>
       <h3 class="text-success">₹ {{ revenue }}</h3>
     </div>
   </div>
 
   <div class="col-md-3">
-    <div class="card shadow-sm p-3">
+    <div class="card shadow-sm p-3 expense-card">
       <h5>Expenses</h5>
       <h3 class="text-danger">₹ {{ expense }}</h3>
     </div>
   </div>
 
   <div class="col-md-3">
-    <div class="card shadow-sm p-3">
+    <div class="card shadow-sm p-3 profit-card">
       <h5>Profit</h5>
   <h3 [ngClass]="profit >= 0 ? 'text-primary' : 'text-warning'">
       ₹ {{ profit }}
@@ -43,7 +43,7 @@
   </div>
 
   <div class="col-md-3">
-    <div class="card shadow-sm p-3">
+    <div class="card shadow-sm p-3 order-card">
       <h5>Loss</h5>
   <h3 [ngClass]="loss >= 0 ? 'text-primary' : 'text-warning'">
       ₹ {{ loss }}
@@ -55,20 +55,22 @@
 
   <!-- Orders -->
   <div class="orders mt-4">
-    <h3>
-      Orders for:
-      <span class="text-primary">
-        {{ selectedDate ? (selectedDate | date:'dd MMM yyyy') : (today | date:'dd MMM yyyy') }}
-      </span>
+     <h3 class="orders-header">
+    Orders for:
+    <span class="selected-date">
+      {{ selectedDate ? (selectedDate | date:'dd MMM yyyy') : (today | date:'dd MMM yyyy') }}
+    </span>
+    <span class="order-count">
       ({{ (filteredOrders$ | async)?.length || 0 }})
-    </h3>
+    </span>
+  </h3>
 
     <h1 *ngIf="(filteredOrders$ | async)?.length === 0">Still no orders Today</h1>
 
     <!-- Scrollable Table Container -->
     <div class="table-scroll" *ngIf="((filteredOrders$ | async)?.length ?? 0) > 0">
       <table class="table table-bordered table-striped">
-        <thead class="table-dark">
+        <thead class="table-darkk">
           <tr>
             <th>Order ID</th>
             <th>Name</th>

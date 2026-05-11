@@ -15,10 +15,13 @@ export class Login {
  email = '';
   password = '';
    isLoading: boolean = false;
+     showPassword: boolean = false;
+
 
   constructor(private auth: AuthService, private router: Router) {}
 
  async login() {
+  
     try {
       this.isLoading = true;
       const r = await this.auth.login(this.email.trim(), this.password);

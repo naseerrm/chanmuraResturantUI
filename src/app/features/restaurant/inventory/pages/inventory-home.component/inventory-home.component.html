@@ -5,14 +5,14 @@
   <h3 class="mb-3">Store Expenses</h3>
 
   <!-- Date Selector -->
-  <div class="mb-3">
+  <div class="mb-3 w-50">
     <label>Select Date:</label>
     <input type="date" [(ngModel)]="selectedDate" class="form-control"
            (change)="loadExpenses()">
   </div>
 
   <!-- Add Expense -->
-  <div class="card p-3 mb-3">
+  <div class="card p-3 mb-3 w-50">
     <h5>Add Expense</h5>
     <input type="text" [(ngModel)]="newExpense.title" placeholder="Expense Title" class="form-control mb-2">
     <input type="number" [(ngModel)]="newExpense.amount" placeholder="Amount" class="form-control mb-2">

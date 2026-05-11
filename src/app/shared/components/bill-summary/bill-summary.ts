@@ -157,56 +157,138 @@ printInvoice(order: any) {
       <head>
         <title>Invoice</title>
         <style>
-          body {
-            font-family: "Times New Roman", serif;
-            font-size: 10pt; /* Adjusted for better readability */
-            padding: 10px;
-            background: #f7e7a9; /* light yellow like the sample */
-            color: #000;
-            margin: 0;
-          }
-          .bill-box {
-            border: 2px solid #000;
-            padding: 10px;
-            width: 100%;
-          }
-          h2, h3, h4 {
-            text-align: center;
-            margin: 0;
-            padding: 0;
-          }
-          .center {
-            text-align: center;
-          }
-          table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 5px;
-          }
-          th, td {
-            border: 1px solid #000;
-            padding: 3px; /* Reduced padding for thermal printer */
-            font-size: 9pt; /* Adjusted font size */
-          }
-          th {
-            text-align: left;
-          }
-          .no-border td {
-            border: none;
-          }
-          .footer-msg {
-            margin-top: 10px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 9pt;
-          }
-          button {
-            padding: 5px 15px;
-            font-size: 10pt;
-            margin-top: 10px;
-            cursor: pointer;
-          }
-        </style>
+  body {
+    font-family: "Poppins", sans-serif;
+    font-size: 11pt;
+    padding: 10px;
+    background: #ffffffff; /* soft restaurant yellow */
+    color: #000;
+    margin: 0;
+  }
+
+  .bill-box {
+    border: 2px solid #000;
+    padding: 12px;
+    border-radius: 8px;
+    background: #ffffffff;
+  }
+
+  h2 {
+    font-size: 17pt;
+    margin-bottom: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 14pt;
+    margin: 5px 0;
+    text-align: center;
+  }
+
+  h4 {
+    font-size: 13pt;
+    margin: 5px 0;
+  }
+
+  .center {
+    text-align: center;
+    font-size: 10pt;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+  }
+
+  /* Header row */
+  th {
+    border-bottom: 1px solid #000;
+    padding: 6px 4px;
+    font-size: 10pt;
+    font-weight: 600;
+    text-align: left; 
+  }
+
+  td {
+    padding: 5px 4px;
+    font-size: 10pt;
+    text-align: left;
+  }
+
+  /* Item table rows */
+  tbody tr td {
+    border-bottom: 1px dashed #aaa;
+  }
+
+  /* Compact no-border table */
+  .no-border td {
+    border: none !important;
+    padding: 3px 0;
+  }
+
+  /* Total Section */
+  .total-box {
+    margin-top: 10px;
+    padding: 8px;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+  }
+
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11pt;
+    padding: 3px 0;
+  }
+
+  .total-row strong {
+    font-weight: 700;
+  }
+
+  .grand-total {
+    font-size: 13pt;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 2px solid #000;
+  }
+
+  /* Footer Message */
+  .footer-msg {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed #888;
+    text-align: center;
+    font-size: 10pt;
+    font-weight: 600;
+  }
+
+  /* Print Button */
+  button {
+    padding: 6px 20px;
+    font-size: 10pt;
+    margin-top: 10px;
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+  }
+
+  @media print {
+    button {
+      display: none;
+    }
+    body {
+      background: white;
+    }
+  }
+</style>
+
       </head>
 
       <body>

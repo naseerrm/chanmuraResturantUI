@@ -1,101 +1,168 @@
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #111;
+}
+
 .kds-grid {
   display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
 }
 
 .kds-card {
-  background: #fff;
-  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff, #f9fafb);
+  border-radius: 18px;
   padding: 18px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  animation: fadeUp 0.4s ease;
+  position: relative;
+  border-left: 6px solid #0d6efd;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kds-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
 }
 
 .kds-card-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: center;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed #ddd;
 }
 
 .table-label {
-  background: #0d6efd;
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
   color: white;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 3px 8px rgba(13,110,253,0.4);
 }
 
 .time-since {
-  font-size: 13px;
-  color: #888;
+  background: #111;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.kds-items {
+  flex-grow: 1;
 }
 
 .kds-item {
-  padding: 12px;
-  border-radius: 10px;
-  background: #f8f8f8;
-  margin-bottom: 10px;
+  background: #f4f6f8;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  border-left: 4px solid #ced4da;
+  transition: 0.25s ease;
+}
+
+.kds-item:hover {
+  background: #eef1f5;
 }
 
 .item-name {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 15px;
-  margin-bottom: 8px;
+  color: #212529;
 }
 
 .qty {
-  margin-left: 6px;
   font-size: 13px;
-  color: #444;
+  font-weight: 600;
+  color: #6c757d;
 }
 
 .status-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 8px;
 }
 
-.status-select {
-  padding: 4px 8px;
-  border-radius: 6px;
-}
-
-/* Status colors */
 .status-badge {
-  padding: 4px 10px;
-  color: #fff;
-  border-radius: 6px;
+  padding: 5px 14px;
+  border-radius: 999px;
   font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
 }
 
 .status-badge.pending {
-  background: #dc3545;
+  background: linear-gradient(135deg, #dc3545, #b02a37);
 }
 
 .status-badge.preparing {
-  background: #ffc107;
-  color: black;
+  background: linear-gradient(135deg, #ffc107, #ffca2c);
+  color: #111;
 }
 
 .status-badge.ready {
-  background: #28a745;
+  background: linear-gradient(135deg, #28a745, #1e7e34);
 }
 
-/* Button */
+.status-select {
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  font-size: 13px;
+  font-weight: 600;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.status-select:hover {
+  border-color: #0d6efd;
+}
+
 .btn-ready {
-  margin-top: 12px;
+  margin-top: 14px;
   width: 100%;
   border: none;
-  background: #198754;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+  background: linear-gradient(135deg, #198754, #157347);
   color: #fff;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(25,135,84,0.4);
+  transition: 0.3s ease;
+}
+
+.btn-ready:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(25,135,84,0.55);
+}
+
+
+.kds-card:has(.status-badge.ready) {
+  border-left-color: #28a745;
+  background: linear-gradient(180deg, #f8fff9, #ffffff);
 }
 
 @keyframes fadeUp {
