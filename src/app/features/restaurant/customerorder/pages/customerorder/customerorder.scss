@@ -1,0 +1,305 @@
+/* customer-order-summary.component.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f5f5;
+}
+
+.order-container {
+  width: 92%;
+  max-width: 1000px;
+  margin: 30px auto;
+}
+
+.header-section {
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.success-icon {
+  font-size: 60px;
+}
+
+.header-section h1 {
+  margin-top: 10px;
+  color: #1b5e20;
+}
+
+.order-id {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.delivery-time {
+  margin-top: 12px;
+  color: #ff5722;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+/* Timeline */
+
+.status-container {
+  background: white;
+  margin-top: 25px;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.timeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #dcdcdc;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.timeline-item.active .circle {
+  background: #4caf50;
+}
+
+.timeline-item p {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.line {
+  flex: 1;
+  height: 4px;
+  background: #dcdcdc;
+}
+
+.active-line {
+  background: #4caf50;
+}
+
+
+/* Cards */
+
+.details-card,
+.delivery-card,
+.items-card,
+.bill-card {
+  background: white;
+  margin-top: 25px;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.details-grid label {
+  color: gray;
+  font-size: 14px;
+}
+
+.details-grid p {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+
+/* Delivery Partner */
+
+.delivery-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.delivery-boy {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+
+/* Items */
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.left-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.food-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
+}
+
+
+/* Bill */
+
+.bill-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 17px;
+}
+
+.total {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: green;
+}
+
+/* Previous Orders */
+
+.history-card {
+  background: white;
+  margin-top: 25px;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.history-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.history-icon {
+  width: 55px;
+  height: 55px;
+  background: #fff3e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.history-items {
+  color: gray;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.history-right {
+  text-align: right;
+}
+
+.history-right h3 {
+  color: green;
+  margin-bottom: 8px;
+}
+
+.history-status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.delivered {
+  background: #4caf50;
+}
+
+.cancelled {
+  background: crimson;
+}
+
+@media(max-width: 768px) {
+
+  .history-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .history-right {
+    text-align: left;
+  }
+
+}
+
+
+/* Mobile Responsive */
+
+@media(max-width: 768px) {
+
+  .timeline {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .line {
+    width: 4px;
+    height: 40px;
+  }
+
+  .item-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .delivery-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}

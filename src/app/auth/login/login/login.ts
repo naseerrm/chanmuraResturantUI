@@ -26,7 +26,23 @@ export class Login {
       this.isLoading = true;
       const r = await this.auth.login(this.email.trim(), this.password);
       if (r.companyId && r.industry) {
-        this.router.navigate(['/dashboard']);
+       // this.router.navigate(['/dashboard']);
+
+// ROLE BASED REDIRECT
+    if (r.role === 'OWNER') {
+
+      this.router.navigate([
+        '/dashboard/restaurantDashboard'
+      ]);
+
+    } else {
+
+      this.router.navigate([
+        '/dashboard/pos'
+      ]);
+    }
+
+
       } else if (r.companyId && !r.industry) {
         this.router.navigate(['/onboarding']);
       } else {

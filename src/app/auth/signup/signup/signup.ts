@@ -69,8 +69,8 @@ export class SignupComponent {
   mobile = '';
   password = '';
   confirmPassword = '';
-  companyCode = '';   // optional: owner may create new company or enter existing
-  isOwner = true;
+  companyCode = 'chan001';   // optional: owner may create new company or enter existing
+  isOwner = false;
   loading = false;
 
   constructor(private auth: AuthService, private cs: CompanyService, private router: Router) {}

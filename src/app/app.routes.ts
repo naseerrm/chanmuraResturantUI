@@ -71,7 +71,13 @@ export const routes: Routes = [
       loadChildren: () =>
         import('./features/restaurant/orders/orders.routes').then(m => m.ORDERS_ROUTES)
     },
+     {
+      path: 'customerOrders',
+      loadChildren: () =>
+        import('./features/restaurant/customerorder/customer-order.routes').then(m => m.CUSTOMERORDERS_ROUTES)
+    },
     {
+
       path:'kds',
       loadChildren: () => 
         import('./features/restaurant/kds/kds.routes').then(m => m.KDS_ROUTES)

@@ -1,0 +1,326 @@
+<!-- 
+    <div class="table-scroll" *ngIf="((filteredOrders$ | async)?.length ?? 0) > 0">
+      <table class="table table-bordered table-striped">
+        <thead class="table-darkk">
+          <tr>
+            <th>Order ID</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Total Amount</th>
+            <th>Transaction</th>
+            <th>Customer Given Amount</th>
+            <th>Customer Balance Amount</th>
+            <th>Time</th>
+            <th>Items</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let o of (filteredOrders$ | async)">
+            <tr>
+              <td>{{ o.orderId }}</td>
+              <td>{{ o.customerName }}</td>
+              <td>{{ o.mobileNumber }}</td>
+              <td><strong>₹{{ o.totalAmount }}</strong></td>
+              <td><strong>₹{{ o.paymentMethod }}</strong></td>
+              <td><strong>₹{{ o.paidAmount }}</strong></td>
+              <td><strong>₹{{ o.balanceAmount }}</strong></td>
+              <td>{{ o.createdAt | date:'shortTime' }}</td>
+              <td>
+                <button class="btn btn-sm btn-primary"
+                        (click)="o.showItems = !o.showItems">
+                  {{ o.showItems ? 'Hide' : 'View' }} Items
+                </button>
+              </td>
+            </tr>
+
+            <tr *ngIf="o.showItems" class="table-light">
+              <td colspan="6">
+                <h5>🛒 Items</h5>
+                <div class="table-scroll">
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th>Item Name</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of o.items">
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>₹{{ item.price }}</td>
+                        <td>₹{{ item.totalPrice }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div> -->
+
+    <!-- customer-order-summary.component.html -->
+
+<div class="order-container">
+
+  <!-- Header -->
+
+  <div class="header-section">
+
+    <div class="success-icon">
+      ✅
+    </div>
+
+    <h1>Order Placed Successfully</h1>
+
+    <p class="order-id">
+      Order ID :
+      <strong>#ORD10245</strong>
+    </p>
+
+    <div class="delivery-time">
+      Estimated Delivery :
+      <strong>35 mins</strong>
+    </div>
+
+  </div>
+
+
+  <!-- Order Status Timeline -->
+
+  <div class="status-container">
+
+    <h2>Order Status</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item active">
+        <div class="circle">✔</div>
+        <p>Order Accepted</p>
+      </div>
+
+      <div class="line active-line"></div>
+
+      <div class="timeline-item active">
+        <div class="circle">✔</div>
+        <p>Food Prepared</p>
+      </div>
+
+      <div class="line active-line"></div>
+
+      <div class="timeline-item active">
+        <div class="circle">🚚</div>
+        <p>Out For Delivery</p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="timeline-item">
+        <div class="circle">📍</div>
+        <p>Delivered</p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Customer Details -->
+
+  <div class="details-card">
+
+    <h2>Customer Details</h2>
+
+    <div class="details-grid">
+
+      <div>
+        <label>Customer Name</label>
+        <p>Naseer</p>
+      </div>
+
+      <div>
+        <label>Mobile Number</label>
+        <p>9876543210</p>
+      </div>
+
+      <div>
+        <label>Delivery Address</label>
+        <p>
+          No 24, Anna Nagar,
+          Chennai, Tamil Nadu
+        </p>
+      </div>
+
+      <div>
+        <label>Payment Method</label>
+        <p>Online Payment</p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Delivery Partner -->
+
+  <div class="delivery-card">
+
+    <h2>Delivery Partner</h2>
+
+    <div class="delivery-info">
+
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+        class="delivery-boy"
+      >
+
+      <div>
+        <h3>Rahul Kumar</h3>
+        <p>Delivery Executive</p>
+        <p>Bike Number : TN09AB1234</p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Ordered Items -->
+
+  <div class="items-card">
+
+    <h2>Ordered Items</h2>
+
+    <div class="item-row">
+
+      <div class="left-item">
+
+        <img
+          src="https://images.unsplash.com/photo-1544025162-d76694265947"
+          class="food-image"
+        >
+
+        <div>
+          <h3>Delhi Malai Chaap</h3>
+          <p>Qty : 2</p>
+        </div>
+
+      </div>
+
+      <div class="price">
+        ₹ 360
+      </div>
+
+    </div>
+
+
+    <div class="item-row">
+
+      <div class="left-item">
+
+        <img
+          src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398"
+          class="food-image"
+        >
+
+        <div>
+          <h3>Paneer Tikka</h3>
+          <p>Qty : 1</p>
+        </div>
+
+      </div>
+
+      <div class="price">
+        ₹ 220
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Bill Details -->
+
+  <div class="bill-card">
+
+    <h2>Bill Details</h2>
+
+    <div class="bill-row">
+      <span>Item Total</span>
+      <span>₹ 580</span>
+    </div>
+
+    <div class="bill-row">
+      <span>Delivery Charge</span>
+      <span>₹ 40</span>
+    </div>
+
+    <div class="bill-row">
+      <span>GST</span>
+      <span>₹ 20</span>
+    </div>
+
+    <div class="bill-row total">
+      <span>Grand Total</span>
+      <span>₹ 640</span>
+    </div>
+
+  </div>
+
+  <!-- Last Orders History -->
+
+<div class="history-card">
+
+  <h2>Previous Orders</h2>
+
+  <div class="history-item" *ngFor="let order of lastOrders">
+
+    <div class="history-left">
+
+      <div class="history-icon">
+        🍽
+      </div>
+
+      <div>
+
+        <h3>{{ order.orderId }}</h3>
+
+        <p>
+          {{ order.date }}
+        </p>
+
+        <p class="history-items">
+          {{ order.items }}
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="history-right">
+
+      <h3>
+        ₹ {{ order.amount }}
+      </h3>
+
+      <span
+        class="history-status"
+        [ngClass]="{
+          'delivered': order.status === 'Delivered',
+          'cancelled': order.status === 'Cancelled'
+        }"
+      >
+        {{ order.status }}
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>

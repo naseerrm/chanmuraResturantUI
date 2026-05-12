@@ -35,7 +35,7 @@
       🍗 Non-Veg
     </span>
 
-    <span class="chip ripple-target"
+    <!-- <span class="chip ripple-target"
           [class.active]="selectedCategory=='BreakFast'"
           (click)="selectedCategory='BreakFast'; currentPage=1">
       🍳 Break-Fast
@@ -45,7 +45,7 @@
           [class.active]="selectedCategory=='Lunch'"
           (click)="selectedCategory='Lunch'; currentPage=1">
       🍽️ Lunch
-    </span>
+    </span> -->
 
      <span class="chip ripple-target"
           [class.active]="selectedCategory=='Juice'"
@@ -60,7 +60,7 @@
     </span>
   </div>
 
-   <div class="order-buttons">
+   <!-- <div class="order-buttons">
   <button 
     class="order-btn dine" 
     [class.selected]="selectedOrder === 'dine'" 
@@ -81,7 +81,7 @@
     (click)="selectOrder('pickup')">
     🛍️ Pickup
   </button>
-</div>
+</div> -->
 
 <!-- Hidden radio buttons if you need real form submission -->
 <input type="radio" name="order" value="dine" [checked]="selectedOrder === 'dine'" hidden>

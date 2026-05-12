@@ -160,7 +160,7 @@ async syncUserContext(uid: string) {
       mobile,
       isOwner,
       companyId: companyCode ?? null,
-      role: isOwner ? 'OWNER' : 'STAFF',
+      role: isOwner ? 'OWNER' : 'user',
       createdAt: serverTimestamp()
     });
 
