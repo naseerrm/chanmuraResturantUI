@@ -1,0 +1,1 @@
+import{Pa as a,eb as n,fb as m,tb as s}from"./chunk-7I4JXLP2.js";var o=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=a({type:t,selectors:[["app-mobile-dashboard"]],decls:2,vars:0,template:function(e,p){e&1&&(n(0,"p"),s(1,"mobile-dashboard.component works!"),m())},encapsulation:2})};var c=[{path:"",component:o}];export{c as MOBILEDASHBOARD_ROUTES};
