@@ -196,7 +196,85 @@ body {
   color: green;
 }
 
+/* Previous Orders */
 
+.history-card {
+  background: white;
+  margin-top: 25px;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.history-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.history-icon {
+  width: 55px;
+  height: 55px;
+  background: #fff3e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.history-items {
+  color: gray;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.history-right {
+  text-align: right;
+}
+
+.history-right h3 {
+  color: green;
+  margin-bottom: 8px;
+}
+
+.history-status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.delivered {
+  background: #4caf50;
+}
+
+.cancelled {
+  background: crimson;
+}
+
+@media(max-width: 768px) {
+
+  .history-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .history-right {
+    text-align: left;
+  }
+
+}
 
 /* Mobile Responsive */
 
