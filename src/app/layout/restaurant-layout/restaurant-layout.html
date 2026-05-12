@@ -4,11 +4,11 @@
   <aside class="sidebar" [class.collapsed]="collapsed">
     <button class="toggle-btn" (click)="toggle()">☰</button>
 
-    <nav class="menu">
+    <nav class="menu" [class.show]="!collapsed">
       <ul>
         <li
   *ngFor="let m of filteredMenus"
-  (click)="navigate(m.path)"
+  (click)="navigate(m.path); mobileMenuOpen = false"
   class="menu-item"
   [class.active]="currentRoute === m.path"
   matTooltip="{{ collapsed ? m.label : '' }}"

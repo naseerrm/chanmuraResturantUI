@@ -3,10 +3,9 @@
 ============================ */
 .restaurant-layout {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   background: #f5f6fa;
   font-family: "Inter", sans-serif;
-  overflow: hidden;
 }
 
 /* ============================
@@ -19,9 +18,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  min-height: 100vh;
   padding: 15px;
-  overflow: hidden;
+  overflow-y: auto;
   transition: width 0.25s ease, padding 0.25s ease;
 }
 
@@ -98,12 +97,28 @@
   width: 0;
   margin: 0;
   overflow: hidden;
+  transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out;
 }
 
 /* Collapsed: center icons */
 .sidebar.collapsed .menu-item {
   justify-content: center;
   padding: 12px 0;
+  transition: padding 0.25s ease-in-out;
+}
+
+/* Expanded state: show text */
+.sidebar:not(.collapsed) .menu-item .text {
+  opacity: 1;
+  width: auto;
+  margin: 0;
+  transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out;
+}
+
+.sidebar:not(.collapsed) .menu-item {
+  justify-content: flex-start;
+  padding: 12px 15px;
+  transition: padding 0.25s ease-in-out;
 }
 
 
@@ -230,24 +245,87 @@
 }
 
 /* ============================
+   Desktop Menu Toggle
+============================ */
+.menu {
+  display: block;
+  transition: all 0.25s ease-in-out;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ============================
    Responsive
 ============================ */
 @media (max-width: 768px) {
   .restaurant-layout {
     flex-direction: column;
+    min-height: auto;
   }
 
   .sidebar {
     width: 100%;
-    flex-direction: row;
+    flex-direction: column;
     height: auto;
+    min-height: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px;
+  }
+
+  .toggle-btn {
+    display: block;
+    margin-bottom: 10px;
+    align-self: flex-start;
   }
 
   .menu {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .menu.show {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .menu-item {
+    padding: 10px 15px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sidebar-footer {
+    margin-top: 10px;
   }
 
   .content-view {
     padding: 15px;
+    min-height: calc(100vh - 80px);
+  }
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  .menu-item .text {
+    font-size: 0.9rem;
   }
 }

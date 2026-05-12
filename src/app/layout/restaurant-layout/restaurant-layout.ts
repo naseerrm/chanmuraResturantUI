@@ -40,9 +40,23 @@ IsAdmin$: string = '';
 
   dropdownOpen: boolean = false;
   collapsed = true;
-    toggle() {
-      this.collapsed = !this.collapsed;
+  mobileMenuOpen = false;
+
+  toggle() {
+    this.collapsed = !this.collapsed;
+    // Close mobile menu when toggling desktop sidebar
+    if (this.mobileMenuOpen) {
+      this.mobileMenuOpen = false;
     }
+  }
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+    // When mobile menu opens, collapse desktop sidebar
+    if (this.mobileMenuOpen && !this.collapsed) {
+      this.collapsed = true;
+    }
+  }
   
 
   constructor(
