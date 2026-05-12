@@ -18,7 +18,7 @@ export class RestaurantContextService {
   }
 
   private init() {
-    this.auth.userUid$
+    this.auth.uid$
       .pipe(
         switchMap(uid => {
           if (!uid) {

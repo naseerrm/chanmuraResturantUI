@@ -20,7 +20,7 @@ export class OnboardingComponent implements OnInit {
   gst = '';
   loading = false;
 
-  industries = ['Restaurant', 'Retail', 'Medical', 'Electrical'];
+  industries = ['Restaurant', 'Retail', 'Medical', 'Electrical', 'Mobile'];
 
   constructor(private cs: CompanyService, private auth: AuthService, private fs: Firestore, private router: Router) {}
 

@@ -1,4 +1,4 @@
-<div class="admin-layout">
+<div class="admin-layout" *ngIf="industry == 'Restaurant'">
 <!-- <app-sidenavbarcomponent></app-sidenavbarcomponent> -->
 <div class="admin container mt-4">
   
@@ -139,5 +139,16 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+
+
+
+<!-- Mobile Admin Page Dashboard -->
+<div class="admin-layout" *ngIf="industry == 'Mobile'">
+<div class="admin container mt-4">
+  
+  <h2 class="mb-4">Admin Dashboard</h2>
+  <app-product-list></app-product-list>
 </div>
 </div>

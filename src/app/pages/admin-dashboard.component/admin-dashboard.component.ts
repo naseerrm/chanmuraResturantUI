@@ -4,16 +4,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FirebaseService } from '../../core/services/firebase.service';
 import { MenuItem } from '../../core/models/menu-item.model';
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
-import Chart from 'chart.js/auto';
 import { Router } from '@angular/router';
 import { RestaurantContextService } from '../../features/restaurant-context.service';
+import { ProductListComponent } from '../../features/mobile/MobileAdmin/product-list.component/product-list.component';
 
 @Component({
   selector: 'app-admin-dashboard',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ProductListComponent],
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.scss']
 })
@@ -23,7 +20,7 @@ export class AdminDashboardComponent {
   lastMonthData: any;
   lastMonthDaily: any[] = [];
   companyId : string = '';
-
+  industry : string = '';
   //  ngAfterViewInit() {
   //   // Only draw chart after view is initialized
   //   if (this.lastMonthDaily.length) {
@@ -46,7 +43,9 @@ export class AdminDashboardComponent {
   previewImage: string | null = null;
   loading = signal(false);
 
-  constructor(private firebaseService: FirebaseService, private router: Router,private restaurantContext : RestaurantContextService) {
+  constructor(private firebaseService: FirebaseService,
+     private router: Router,
+     private restaurantContext : RestaurantContextService) {
     
     this.restaurantContext.userDetail$
     .subscribe(user => {
@@ -56,25 +55,13 @@ export class AdminDashboardComponent {
       console.log(this.companyId);
       this.loadItems();
     });
+    this.restaurantContext.company$.subscribe(company => {
+if(company){
+  this.industry = company.industry;
+}
+    });
   }
-
-//  ngOnInit() {
-//   this.restaurantContext.userDetail$
-//     .subscribe(user => {
-//       if (!user) return;   // prevent error
-
-//       this.companyId = user.companyId;
-//       console.log(this.companyId);
-//     });
-
-//   this.restaurantContext.company$.subscribe(company => {
-//     // ...
-//   });
-// } 
-
-// ngOnDestroy() {
-//   if (this.unsubToday) this.unsubToday();
-// }
+// load items from Firestore for Restaurant Details
 
   async loadLastMonthSales() {
   const data = await this.firebaseService.getLastMonthStats();
@@ -86,7 +73,6 @@ export class AdminDashboardComponent {
 
   //this.drawMonthlyChart();
 }
-
   // load items from Firestore
   async loadItems() {
     try {
@@ -105,36 +91,6 @@ export class AdminDashboardComponent {
       console.error('Load items error', err);
     }
   }
-
-//   drawMonthlyChart() {
-//   const ctx: any = document.getElementById('monthlyChart');
-//   new Chart(ctx, {
-//     type: 'bar',
-//     data: {
-//       labels: this.lastMonthDaily.map(x => x.date),
-//       datasets: [{
-//         data: this.lastMonthDaily.map(x => x.revenue),
-//         borderWidth: 1
-//       }]
-//     }
-//   });
-// }
-
-emailReport() {
-  //this.firebaseService.sendMonthlyReportToEmail("admin@chanmura.com");
-}
-
-downloadPDF() {
-  const pdf = new jsPDF();
-  pdf.text("Chanmura Restaurant - Last Month Report", 10, 10);
-
-  autoTable(pdf, {
-    head: [['Date', 'Revenue']],
-    body: this.lastMonthDaily.map(x => [x.date, x.revenue.toString()])
-  });
-
-  pdf.save("Monthly_Sales_Report.pdf");
-}
 
   onFileSelected(event: any) {
     if (!event?.target?.files?.length) return;
@@ -202,7 +158,6 @@ editItem(item: MenuItem) {
   this.selectedItem = { ...item };  // Copy object
 }
 
-
 cancelEdit() {
   this.selectedItem = null;
   this.previewImage = null;
@@ -230,8 +185,6 @@ async updateItem() {
   this.loadItems();
 }
 
-
-
   // decrease stock manually
   async decreaseStock(item: MenuItem, amount = 1) {
     if (!item.id) return;
@@ -239,4 +192,7 @@ async updateItem() {
     await this.firebaseService.updateMenuItem(this.companyId,item.id, { quantityAvailable: newQty });
     await this.loadItems();
   }
+
+
+  // load items from Firestore For Mobile I
 }

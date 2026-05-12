@@ -1,0 +1,4 @@
+.product-row { display:flex; gap:12px; padding:8px; border-bottom:1px solid #eee; }
+.left img { width:64px; height:64px; object-fit:cover; border-radius:6px; }
+.center { flex:1; }
+.right { text-align:right; }

@@ -6,10 +6,12 @@ import { Router } from '@angular/router';
 import { RestaurantLayoutComponent } from '../restaurant-layout/restaurant-layout';
 import { RetailLayoutComponent } from '../retail-layout/retail-layout';
 import { MedicalLayoutComponent } from '../medical-layout/medical-layout';
+import { MobileLayout } from '../mobile-layout/mobile-layout';
+
 
 @Component({
   selector: 'app-industry-layout',
-  imports: [CommonModule,RestaurantLayoutComponent,RetailLayoutComponent,MedicalLayoutComponent],
+  imports: [CommonModule,RestaurantLayoutComponent,RetailLayoutComponent,MedicalLayoutComponent,MobileLayout],
   templateUrl: './industry-layout.html',
   styleUrl: './industry-layout.scss'
 })

@@ -1,0 +1,59 @@
+<div class="add-product">
+  <h2>{{ isEdit ? 'Edit Product' : 'Add Product' }}</h2>
+
+  <label>Category</label>
+  <select [(ngModel)]="product.categoryId">
+    <option value="">-- Select --</option>
+    <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
+  </select>
+
+  <label>Product Name</label>
+  <input [(ngModel)]="product.name" type="text" />
+
+  <label>Brand</label>
+  <input [(ngModel)]="product.brand" type="text" />
+
+  <label>GST (%)</label>
+  <input [(ngModel)]="product.gst" type="number" />
+
+  <label>Has Variants</label>
+  <input type="checkbox" [(ngModel)]="product.isVariant" />
+
+  <label>Upload Images</label>
+  <input type="file" (change)="onImageSelected($event)" multiple accept="image/*"/>
+  <div class="previews">
+    <img *ngFor="let p of imagePreviews" [src]="p" />
+  </div>
+
+  <div *ngIf="product.isVariant">
+    <h3>Variants</h3>
+    <table class="variants">
+      <thead>
+        <tr>
+          <th>RAM</th><th>Storage</th><th>Color</th><th>MRP</th><th>Price</th><th>Stock</th><th>SKU</th><th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let v of variants; let i = index">
+          <td><input [(ngModel)]="v.ram" /></td>
+          <td><input [(ngModel)]="v.storage" /></td>
+          <td><input [(ngModel)]="v.color" /></td>
+          <td><input type="number" [(ngModel)]="v.mrp" /></td>
+          <td><input type="number" [(ngModel)]="v.price" /></td>
+          <td><input type="number" [(ngModel)]="v.stock" /></td>
+          <td>
+            <input [(ngModel)]="v.sku" />
+            <button type="button" (click)="fillSkuForVariant(i)">Auto</button>
+          </td>
+          <td><button (click)="removeVariant(i)">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="addVariant()">+ Add Variant</button>
+  </div>
+
+  <div class="actions">
+    <button (click)="save()" [disabled]="loading">{{ loading ? 'Saving...' : (isEdit ? 'Update' : 'Create') }}</button>
+    <button routerLink="/admin/products">Cancel</button>
+  </div>
+</div>
