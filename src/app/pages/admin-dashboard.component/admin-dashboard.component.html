@@ -1,0 +1,154 @@
+<div class="admin-layout" *ngIf="industry == 'Restaurant'">
+<!-- <app-sidenavbarcomponent></app-sidenavbarcomponent> -->
+<div class="admin container mt-4">
+  
+  <h2 class="mb-4">Admin Dashboard</h2>
+
+
+  <!-- Add / Upload Menu Item -->
+  <div class="card p-3 mb-4">
+    <h5>Add / Upload Menu Item</h5>
+    <div class="row g-2">
+      <div class="col-12 col-md-4">
+        <input [(ngModel)]="newItem.name" name="name" class="form-control" placeholder="Name" />
+      </div>
+      <div class="col-6 col-md-2">
+        <input
+          type="number"
+          [ngModel]="newItem.price === 0 ? '' : newItem.price"
+          (ngModelChange)="newItem.price = $event"
+          placeholder="Enter Price"
+          name="price"
+          class="form-control"
+        />
+      </div>
+      <div class="col-6 col-md-2">
+        <input
+          type="number"
+          [ngModel]="newItem.quantityAvailable === 0 ? '' : newItem.quantityAvailable"
+          (ngModelChange)="newItem.quantityAvailable = $event"
+          placeholder="Enter Quantity"
+          name="quantityAvailable"
+          class="form-control"
+        />
+      </div>
+      <div class="col-12 col-md-2">
+        <select [(ngModel)]="newItem.category" name="category" class="form-control">
+          <option value="" disabled>Select Category</option>
+          <option value="Veg">Veg</option>
+          <option value="Non-Veg">Non-Veg</option>
+        </select>
+      </div>
+      <div class="col-12 mt-2">
+        <textarea [(ngModel)]="newItem.description" name="desc" class="form-control" placeholder="Description"></textarea>
+      </div>
+
+      <div class="col-12 col-md-6 mt-2">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-control" />
+      </div>
+      <div class="col-12 col-md-6 mt-2" *ngIf="previewImage">
+        <p class="mb-1">Preview:</p>
+        <img [src]="previewImage" alt="preview" class="img-preview" />
+      </div>
+
+      <div class="col-12 mt-3 text-end">
+        <button class="btn btn-primary" (click)="addMenuItem()" [disabled]="loading()">
+          {{ loading() ? 'Saving...' : 'Add Menu Item' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu Items Table -->
+  <h5>Menu Items</h5>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <!-- <th>Qty</th> -->
+          <th>Category</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of menuItems()">
+          <td>
+            <img *ngIf="item.imageUrl" [src]="item.imageUrl" alt="{{ item.name }}" width="60" />
+          </td>
+          <td>{{ item.name }}</td>
+          <td>₹{{ item.price }}</td>
+          <!-- <td>{{ item.quantityAvailable }}</td> -->
+          <td>{{ item.category }}</td>
+          <td class="text-nowrap">
+            <!-- <button class="btn btn-sm btn-warning me-1 mb-1" (click)="decreaseStock(item,1)">-1</button> -->
+            <button class="btn btn-sm btn-primary me-1 mb-1" (click)="editItem(item)">Edit</button>
+            <button class="btn btn-sm btn-danger mb-1" (click)="deleteItem(item)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Edit Form -->
+  <div class="card mt-3" *ngIf="selectedItem">
+    <div class="card-body">
+      <h4>Edit Item</h4>
+      <div class="row g-2">
+        <div class="col-12 col-md-6">
+          <label>Name</label>
+          <input type="text" [(ngModel)]="selectedItem.name" class="form-control">
+        </div>
+        <div class="col-6 col-md-3">
+          <label>Price</label>
+          <input type="number" [(ngModel)]="selectedItem.price" class="form-control">
+        </div>
+        <div class="col-6 col-md-3">
+          <label>Quantity</label>
+          <input type="number" [(ngModel)]="selectedItem.quantityAvailable" class="form-control">
+        </div>
+        <div class="col-12 col-md-6 mt-2">
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-control" />
+        </div>
+        <div class="col-12 col-md-6 mt-2">
+          <p class="mb-1">Preview:</p>
+          <img [src]="selectedItem.imageUrl" alt="preview" class="img-preview" />
+        </div>
+        <div class="col-6 col-md-3 mt-2">
+          <label>Category</label>
+          <select [(ngModel)]="selectedItem.category" class="form-control">
+            <option value="Veg">Veg</option>
+            <option value="Non-Veg">Non-Veg</option>
+          </select>
+        </div>
+        <div class="col-6 col-md-3 mt-2">
+          <label>Availability</label>
+          <select [(ngModel)]="selectedItem.isAvailable" class="form-control">
+            <option [value]="true">Available</option>
+            <option [value]="false">Not Available</option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-3">
+        <button class="btn btn-success me-2" (click)="updateItem()" [disabled]="loading()">{{ loading() ? 'Saving...' : 'Update' }}</button>
+
+
+        <button class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<!-- Mobile Admin Page Dashboard -->
+<div class="admin-layout" *ngIf="industry == 'Mobile'">
+<div class="admin container mt-4">
+  
+  <h2 class="mb-4">Admin Dashboard</h2>
+  <app-product-list></app-product-list>
+</div>
+</div>

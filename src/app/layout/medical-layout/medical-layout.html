@@ -1,0 +1,18 @@
+<div class="layout medical">
+  <aside class="sidebar">
+    <div class="logo">{{ companyName }}</div>
+    <ul class="menu">
+      <li *ngFor="let m of menus" (click)="navigate(m.path)">{{ m.label }}</li>
+    </ul>
+    <div class="bottom">
+      <button (click)="logout()">Logout</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h2>Medical Dashboard</h2>
+    </header>
+    <section class="view"><router-outlet></router-outlet></section>
+  </main>
+</div>

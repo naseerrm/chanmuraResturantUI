@@ -1,0 +1,351 @@
+host { display:block; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; padding:16px; background:#f7fafc; }
+.header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px }
+h1{ margin:0; font-size:20px }
+/* Dashboard Header Container */
+.dashboard-header {
+  margin-bottom: 24px;
+}
+
+/* Main Title */
+.dashboard-header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #111827; 
+  margin-bottom: 6px;
+}
+
+.dashboard-header .muted {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #6b7280; 
+}
+
+.filters {
+  display: flex;
+  gap: 12px; 
+  margin-bottom: 16px;
+  flex-wrap: wrap; 
+}
+
+/* ===== Chip Buttons ===== */
+.chip {
+  padding: 8px 16px;
+  border: 1px solid #d1d5db; 
+  border-radius: 25px; 
+  background-color: #f9fafb; 
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chip:hover {
+  background-color: #6366f1; 
+  color: #ffffff; 
+  border-color: #6366f1;
+  transform: translateY(-2px);
+}
+
+.chip.active {
+  background-color: #6366f1;
+  color: #ffffff;
+  border-color: #6366f1;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .filters {
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+
+/* KPI GRID */
+.kpis{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* KPI CARD */
+.card{
+  padding: 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+}
+
+/* Hover effect */
+// .card:hover{
+//   transform: translateY(-4px);
+//   box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+//   background: linear-gradient(108deg, #ffffff, #e7e7e7);
+// }
+
+.revenue-card:hover{
+    background: linear-gradient(108deg, #ffffff, #6366f15e);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+.expense-card:hover{
+   background: linear-gradient(108deg, #ffffff, #f59e0b52);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+.profit-card:hover{
+   background: linear-gradient(108deg, #ffffff, #10b98154);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+.order-card:hover{
+   background: linear-gradient(108deg, #ffffff, #f63a334a);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+
+
+/* Titles */
+.card small{
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* Big KPI Number */
+.big{
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 8px;
+  color: #111827;
+}
+
+/* Subtitle */
+.sub{
+  color: #9ca3af;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Profit colors */
+.positive{ color:#16a34a }
+.negative{ color:#dc2626 }
+
+/* Gradient color variants for each card */
+.kpis .card:nth-child(1){
+  border-left: 6px solid #6366f1; 
+}
+.kpis .card:nth-child(2){
+  border-left: 6px solid #f59e0b; 
+}
+.kpis .card:nth-child(3){
+  border-left: 6px solid #10b981; 
+}
+.kpis .card:nth-child(4){
+  border-left: 6px solid #f63a33; 
+}
+
+.card small {
+  font-family: 'Poppins', sans-serif; 
+  font-size: 14px; 
+  color: #6b7280;
+}
+
+.card .sub {
+  font-family: 'Poppins', sans-serif; /* consistent font */
+  font-size: 13px; /* slightly bigger */
+  color: #9ca3af;
+}
+
+/* Right Sidebar Container */
+aside.right {
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 450px;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Title */
+aside.right h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+/* Top Items List */
+aside.right ol {
+  padding-left: 20px;
+  margin: 0;
+}
+
+aside.right ol li {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+aside.right ol li strong {
+  color: #6b7280;
+}
+
+/* Actions Buttons Container */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* Primary Button */
+button.primary {
+  background-color: #6366f1; /* Indigo */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button.primary:hover {
+  background-color: #4f46e5;
+  transform: translateY(-2px);
+}
+
+/* Outline Buttons */
+button.outline {
+  background-color: #f9fafb;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button.outline:hover {
+  // border: 2px solid #6366f1;
+  background-color: #6366f1;
+  transform: translateY(-2px);
+  color: rgb(255, 255, 255);
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  aside.right {
+    max-width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
+
+.main{ display:grid; grid-template-columns:2fr 1fr; gap:12px }
+.left{ background:white; padding:12px; border-radius:8px }
+// .right{ background:white; padding:12px; border-radius:8px }
+
+
+.sparkline{ display:flex; align-items:flex-end; gap:6px; height:80px; margin:8px 0 }
+.sparkline .bar{ flex:1; background: linear-gradient(180deg, #4ab6d8, #2F80ED); border-radius:4px }
+
+
+.tx-table{ width:100%; border-collapse:collapse; margin-top:8px }
+.tx-table th{ text-align:left; padding:6px; color:#6b7280; font-size:12px }
+.tx-table td {
+  padding: 8px 6px;
+  border-top: 1px solid #eef2f7;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+// .actions{ margin-top:12px; display:flex; flex-direction:column; gap:8px }
+// .primary{ background:#4f46e5; color:white; padding:8px; border-radius:6px; border:none }
+// .outline{ background:white; border:1px solid #e5e7eb; padding:8px; border-radius:6px }
+
+
+footer.small{ margin-top:12px }
+
+
+/* responsive */
+@media (max-width:800px){ .main{ grid-template-columns:1fr } .kpis{ grid-template-columns:repeat(2,1fr) } }
+
+/* CSS for order Type based on Dine-in, Delivery and Pickup */
+.order-type-wrapper {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.order-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.order-btn {
+  padding: 20px 40px;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.order-btn:hover {
+  transform: scale(1.05);
+}
+
+.dine {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.delivery {
+  background: #28a745;
+  color: #fff;
+}
+
+.pickup {
+  background: #ffc107;
+  color: #000;
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .filters {
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

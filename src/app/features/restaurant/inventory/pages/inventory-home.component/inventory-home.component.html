@@ -1,0 +1,61 @@
+<div class="admin-layout">
+
+<div class="container mt-3">
+
+  <h3 class="mb-3">Store Expenses</h3>
+
+  <!-- Date Selector -->
+  <div class="mb-3 w-50">
+    <label>Select Date:</label>
+    <input type="date" [(ngModel)]="selectedDate" class="form-control"
+           (change)="loadExpenses()">
+  </div>
+
+  <!-- Add Expense -->
+  <div class="card p-3 mb-3 w-50">
+    <h5>Add Expense</h5>
+    <input type="text" [(ngModel)]="newExpense.title" placeholder="Expense Title" class="form-control mb-2">
+    <input type="number" [(ngModel)]="newExpense.amount" placeholder="Amount" class="form-control mb-2">
+    <textarea [(ngModel)]="newExpense.note" placeholder="Note" class="form-control mb-2"></textarea>
+    <button class="btn btn-success" (click)="addExpense()" [disabled]="loading()">{{ loading() ? 'Saving...' : 'Add' }}</button>
+  </div>
+
+  <h5>Total Expense: ₹{{ totalExpense$ | async }}</h5>
+
+  <!-- Expense List -->
+  <table class="table" *ngIf="((expenses$ | async)?.length ?? 0) > 0">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Amount</th>
+        <th>Note</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let e of (expenses$ | async)">
+        <ng-container *ngIf="editingItem?.id !== e.id">
+          <td>{{ e.title }}</td>
+          <td>₹{{ e.amount }}</td>
+          <td>{{ e.note }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary" (click)="editExpense(e)">Edit</button>&nbsp;
+            <button class="btn btn-sm btn-danger" (click)="removeExpense(e.id)">Delete</button>
+          </td>
+        </ng-container>
+
+        <ng-container *ngIf="editingItem?.id === e.id">
+          <td><input [(ngModel)]="editingItem.title" class="form-control"></td>
+          <td><input type="number" [(ngModel)]="editingItem.amount" class="form-control"></td>
+          <td><input [(ngModel)]="editingItem.note" class="form-control"></td>
+          <td>
+            <button class="btn btn-sm btn-success" (click)="saveEdit()">Save</button>&nbsp;
+            <button class="btn btn-sm btn-secondary" (click)="editingItem=null">Cancel</button>
+          </td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

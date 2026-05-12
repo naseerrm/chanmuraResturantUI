@@ -1,0 +1,55 @@
+<h2 class="fw-bold mb-4">Kitchen Display System</h2>
+
+<div class="kds-grid">
+
+  <div *ngFor="let order of kdsOrders" class="kds-card">
+
+    <div class="kds-card-header">
+      <div class="table-label">Table {{ order.table }}</div>
+      <div class="time-since">{{ order.startTime }}</div>
+    </div>
+
+    <div class="kds-items">
+      <div *ngFor="let item of order.items" class="kds-item">
+
+        <div class="item-name">
+          {{ item.displayName }} 
+          <span class="qty">x{{ item.qty }}</span>
+        </div>
+
+        <div class="status-row">
+          <span class="status-badge" [class]="item.itemStatus">
+            {{ item.itemStatus | titlecase }}
+          </span>
+
+          <select class="status-select"
+                  [(ngModel)]="item.itemStatus"
+                  (change)="updateItemStatus(order, item)">
+            <option value="pending">Pending</option>
+            <option value="preparing">Preparing</option>
+            <option value="ready">Ready</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="btn-ready ripple" *ngIf="order.status != 'ready'"
+            (click)="markOrderReady(order)">
+      Mark Order Ready
+    </button>
+
+      <button class="btn-ready ripple" *ngIf="order.status === 'ready'"
+            (click)="TakeBill(order)">
+      Take a Table bill
+    </button>
+
+  </div>
+
+</div>
+
+<app-bill-summary
+  [cartItems]="cartItems"
+  [upiQrCode]="upiQrCode"
+  (orderConfirmed)="handleOrderConfirmed($event)">
+</app-bill-summary>

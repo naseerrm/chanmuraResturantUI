@@ -1,0 +1,28 @@
+/* ============================================
+   THEME VARIABLES
+============================================ */
+:root {
+  --sidebar-bg: #ffffff;
+  --sidebar-color: #2d3436;
+  --sidebar-hover: #dfe6e9;
+  --sidebar-active: #6c5ce7;
+
+  --content-bg: #f5f6fa;
+  --topbar-bg: #ffffff;
+  --text-color: #2d3436;
+  --card-bg: #ffffff;
+  --border-color: #e3e3e3;
+}
+
+.dark-theme {
+  --sidebar-bg: #1e1e2f;
+  --sidebar-color: #dfe6ff;
+  --sidebar-hover: #2d2d44;
+  --sidebar-active: #6c5ce7;
+
+  --content-bg: #12121c;
+  --topbar-bg: #1e1e2f;
+  --text-color: #ffffff;
+  --card-bg: #1d1d2f;
+  --border-color: #333345;
+}

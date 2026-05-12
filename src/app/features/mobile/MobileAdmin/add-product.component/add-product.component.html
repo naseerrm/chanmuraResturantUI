@@ -1,0 +1,62 @@
+<h2>Add Product</h2>
+
+<button (click)="addCategory()">+ Add Category</button>
+
+<select [(ngModel)]="product.categoryId">
+  <option value="">Select Category</option>
+  <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>
+</select>
+
+<input type="text" placeholder="Product Name" [(ngModel)]="product.name">
+
+<label>Upload Images</label>
+<input type="file" multiple (change)="onFileSelect($event)">
+
+<h3>Variants</h3>
+
+<button (click)="addVariantMaster('RAM')">+ Add RAM</button>
+<button (click)="addVariantMaster('Storage')">+ Add Storage</button>
+<button (click)="addVariantMaster('Color')">+ Add Color</button>
+
+<table>
+  <tr>
+    <th>RAM</th>
+    <th>Storage</th>
+    <th>Color</th>
+    <th>MRP</th>
+    <th>Price</th>
+    <th>Stock</th>
+    <th>Expiry</th>
+    <th>SKU</th>
+  </tr>
+
+  <tr *ngFor="let v of variants">
+    <td>
+      <select [(ngModel)]="v.ram">
+        <option *ngFor="let r of ramList" [value]="r.name">{{r.name}}</option>
+      </select>
+    </td>
+
+    <td>
+      <select [(ngModel)]="v.storage">
+        <option *ngFor="let s of storageList" [value]="s.name">{{s.name}}</option>
+      </select>
+    </td>
+
+    <td>
+      <select [(ngModel)]="v.color">
+        <option *ngFor="let c of colorList" [value]="c.name">{{c.name}}</option>
+      </select>
+    </td>
+
+    <td><input [(ngModel)]="v.mrp"></td>
+    <td><input [(ngModel)]="v.price"></td>
+    <td><input [(ngModel)]="v.stock"></td>
+    <td><input type="date" [(ngModel)]="v.expiry"></td>
+    <td><input [(ngModel)]="v.sku"></td>
+  </tr>
+</table>
+
+<button (click)="addVariantRow()">+ Add Variant Row</button>
+
+<button (click)="saveProduct()">Save Product</button>
