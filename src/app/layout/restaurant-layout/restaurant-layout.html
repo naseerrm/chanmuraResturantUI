@@ -7,7 +7,7 @@
     <nav class="menu">
       <ul>
         <li
-  *ngFor="let m of menus"
+  *ngFor="let m of filteredMenus"
   (click)="navigate(m.path)"
   class="menu-item"
   [class.active]="currentRoute === m.path"

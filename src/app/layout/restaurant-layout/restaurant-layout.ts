@@ -15,19 +15,22 @@ import { MatTooltip } from '@angular/material/tooltip';
 export class RestaurantLayoutComponent implements OnInit {
 currentRoute = '';
   menus = [
-    { label: 'Dashboard', path: 'restaurantDashboard', icon : '📊' },
-    { label: 'POS', path: 'pos', icon : '💳' },
-    { label: 'Table', path: 'resturantTable' , icon : '🍽️'},
-    { label: 'Orders', path: 'orders' , icon : '🧾'},
-    { label: 'KDS', path: 'kds', icon : '👨‍🍳' },
-    { label: 'Inventory', path: 'inventory', icon : '📦' },
-    { label: 'Reports', path: 'reports', icon : '📈' },
-    { label: 'Notification', path: 'restaurantDashboard', icon : '🔔' },
-    { label: 'Hold', path: 'restaurantDashboard', icon : '✋' },
-    { label: 'Admin', path: 'admin' , icon : '👤'},
-    { label: 'Cart', path: 'cart', icon : '🛒' }
+    { label: 'Dashboard', path: 'restaurantDashboard', icon : '📊',roles: ['OWNER'] },
+    { label: 'POS', path: 'pos', icon : '💳' ,roles: ['user']},
+    { label: 'Table', path: 'resturantTable' , icon : '🍽️',roles: ['OWNER']},
+    { label: 'Orders', path: 'orders' , icon : '🧾',roles: ['OWNER']},
+    { label: 'KDS', path: 'kds', icon : '👨‍🍳' ,roles: ['OWNER']},
+    { label: 'Inventory', path: 'inventory', icon : '📦',roles: ['OWNER'] },
+    { label: 'Reports', path: 'reports', icon : '📈',roles: ['OWNER'] },
+    { label: 'Notification', path: 'restaurantDashboard', icon : '🔔', roles: ['OWNER', 'user'] },
+    { label: 'Hold', path: 'restaurantDashboard', icon : '✋' ,roles: ['OWNER']},
+    { label: 'Admin', path: 'admin' , icon : '👤',roles: ['OWNER']},
+    { label: 'Cart', path: 'cart', icon : '🛒',roles: ['user'] },
+    { label: 'Your Order', path: 'customerOrders', icon : '🧾',roles: ['user'] }
   ];
+  filteredMenus: any[] = [];
  companyName$: Observable<string> | undefined;
+IsAdmin$: string = '';
 // User profile object
   user: {
     name: string;
@@ -59,11 +62,20 @@ currentRoute = '';
       map(c => c?.businessName ?? 'Chanmura Restaurant')
     );
 
+    this.ctx.userDetail$
+    .subscribe(async user => {
+      if (!user) return;   // prevent error
+console.log('User details:', user);
+      this.IsAdmin$ = user?.role === 'OWNER' ? 'OWNER' : 'user';
+       this.filteredMenus = this.menus.filter(menu =>
+      menu.roles.includes(user.role)
+    );
+    });
+
     this.ctx.company$
     .subscribe(async company => {
       if (!company) return;   // prevent error
 
-      console.log("company Details", company);
     });
 
     this.user = {
