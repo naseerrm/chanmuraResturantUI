@@ -16,14 +16,17 @@ import { Loadercomponent } from '../../../shared/components/loadercomponent/load
 export class Login {
   email = '';
   password = '';
-  isLoading = false;
+   isLoading: boolean = false;
+     showPassword: boolean = false;
+
 
   constructor(
     private auth: AuthService,
     private router: Router
   ) {}
 
-  async login() {
+ async login() {
+  
     try {
       this.isLoading = true;
 

@@ -8,10 +8,17 @@
 <a routerLink="/login">Already have account? Login</a> -->
  <div class="signup-container">
 
-    <!-- LEFT: SIGN UP FORM -->
-    <div class="signup-form">
+  <!-- LEFT SIDE IMAGE -->
+  <div class="visual-side">
+    <img src="assets/images/chanmura.png" class="visual-image" alt="Illustration">
+  </div>
+
+  <!-- RIGHT SIDE FORM -->
+  <div class="signup-form">
+    <div class="form-card">
+
       <div class="logo-container">
-        <img src="assets/images/chanmura.jpg" alt="Chanmura Logo" class="logo">
+        <img src="assets/images/chanmura.png" class="logo">
       </div>
 
       <h2>Create Account</h2>
@@ -23,13 +30,13 @@
           <input type="email" placeholder="Email ID" [(ngModel)]="email" name="email" required>
         </div>
 
-        <div class="input-group">
+        <!-- <div class="input-group">
           <input type="text" placeholder="Company Code (unique)" [(ngModel)]="companyCode" name="companyCode" required>
         </div>
-        
-        <div class="input-group">
-           <label><input type="checkbox" [(ngModel)]="isOwner" name="isOwner" /> I am the owner / admin</label>
-        </div>
+
+        <div class="input-group checkbox-group">
+          <label><input type="checkbox" [(ngModel)]="isOwner" name="isOwner" /> I am the owner / admin</label>
+        </div> -->
 
         <div class="input-group">
           <input type="text" placeholder="Mobile Number" [(ngModel)]="mobile" name="mobile" required>
@@ -43,15 +50,13 @@
           <input type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
         </div>
 
-        <button type="submit" [disabled]="loading" class="signup-btn">Create Account</button>
+        <button type="submit" class="signup-btn">Create Account</button>
       </form>
 
-      <p class="login-link">Already have an account? <a routerLink="/login">Login</a></p>
-    </div>
+      <p class="login-link">Already have an account?
+        <a routerLink="/login">Login</a>
+      </p>
 
-    <!-- RIGHT: IMAGE -->
-    <div class="visual-side">
-      <img src="assets/images/chanmura.jpg" alt="Illustration" class="visual-image">
     </div>
-
   </div>
+</div>

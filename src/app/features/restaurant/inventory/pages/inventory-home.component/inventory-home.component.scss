@@ -1,0 +1,166 @@
+h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #111827; 
+  margin-bottom: 6px;
+}
+/* ----------------------------------------
+   DATE SELECTOR
+---------------------------------------- */
+.mb-3 label {
+  font-weight: 600;
+  color: #374151;
+}
+
+input[type="date"].form-control {
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding: 8px 12px;
+  transition: 0.25s;
+}
+
+input[type="date"].form-control:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+/* ----------------------------------------
+   ADD EXPENSE CARD
+---------------------------------------- */
+.card {
+  border-radius: 12px !important;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+}
+
+.card h5 {
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.card .form-control {
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  transition: 0.25s;
+}
+
+.card .form-control:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+}
+
+/* Add Button */
+.btn-success {
+  background-color: #10b981 !important;
+  border-color: #10b981 !important;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 7px 16px;
+  transition: all 0.2s;
+}
+
+.btn-success:hover {
+  background-color: #0ea970 !important;
+  transform: translateY(-2px);
+}
+
+/* ----------------------------------------
+   EXPENSE TABLE
+---------------------------------------- */
+.table {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  background: white;
+  margin-top: 15px;
+}
+
+.table thead {
+  background-color: #6366f1;
+  color: white;
+}
+
+.table thead th {
+  padding: 12px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.table tbody td {
+  padding: 12px;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #374151;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* ----------------------------------------
+   ACTION BUTTONS
+---------------------------------------- */
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 13px;
+  border-radius: 6px !important;
+  font-weight: 600;
+}
+
+/* Edit button */
+.btn-primary {
+  background-color: #6366f1 !important;
+  border-color: #6366f1 !important;
+}
+
+.btn-primary:hover {
+  background-color: #5356e0 !important;
+}
+
+/* Delete button */
+.btn-danger {
+  background-color: #ef4444 !important;
+  border-color: #ef4444 !important;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626 !important;
+}
+
+/* Save */
+.btn-success.btn-sm:hover {
+  transform: translateY(-1px);
+}
+
+/* Cancel */
+.btn-secondary {
+  background-color: #9ca3af !important;
+  border-color: #9ca3af !important;
+}
+
+.btn-secondary:hover {
+  background-color: #7d8390 !important;
+}
+
+/* ----------------------------------------
+   EDIT MODE INPUTS
+---------------------------------------- */
+.table input.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.table input.form-control:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.25);
+}
+
+/* ----------------------------------------
+   TOTAL EXPENSE
+---------------------------------------- */
+h5 {
+  font-weight: 600;
+  color: #374151;
+}

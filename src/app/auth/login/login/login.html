@@ -5,41 +5,60 @@
   <button type="submit">Login</button>
 </form>
 <a routerLink="/signup">Create new account</a> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <app-loader [isLoading]="isLoading"></app-loader>
 
 <div class="login-container">
-    <!-- Left side with the login form -->
-    <div class="login-form">
+
+  <!-- LEFT SIDE IMAGE -->
+  <div class="visual-side">
+    <img src="assets/images/chanmura.png" alt="Visual Representation" class="visual-image">
+  </div>
+
+  <!-- RIGHT SIDE LOGIN CONTENT -->
+  <div class="login-form">
+
+    <div class="form-wrapper"> 
+
       <div class="logo-container">
-        <img src="assets/images/chanmura.jpg" alt="Chanmura Logo" class="logo">
+        <img src="assets/images/chanmura.png" alt="Chanmura Logo" class="logo">
       </div>
       <h2>WELCOME BACK</h2>
       <p>Welcome back! Please enter your details.</p>
-      
+
       <form #form="ngForm" (ngSubmit)="login()">
         <div class="input-group">
           <input type="text" placeholder="Enter your email" [(ngModel)]="email" name="email" required />
         </div>
-        <div class="input-group">
-          <input type="password" placeholder="Enter your password" [(ngModel)]="password" name="password" required />
-        </div>
+        <div class="input-group password-group">
+  <input 
+    [type]="showPassword ? 'text' : 'password'" 
+    placeholder="Enter your password" 
+    [(ngModel)]="password" 
+    name="password" 
+    required 
+  />
+
+  <span class="toggle-password" (click)="showPassword = !showPassword">
+    <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+  </span>
+</div>
         <div class="remember-forgot">
           <label><input type="checkbox" name="remember"> Remember me</label>
           <a routerLink="/forgotpassword" class="forgot-password">Forgot password?</a>
         </div>
         <button type="submit" class="login-btn">Sign In</button>
-        
         <button type="button" class="google-btn">
-          <img src="assets/images/google-logo.png" alt="Google Logo" class="google-logo" /> Sign in with Google
+          <img src="assets/images/google-logo.png" alt="Google Logo" class="google-logo" />
+          Sign in with Google
         </button>
       </form>
-      
-      <p class="signup-link">Don’t have an account? <a routerLink="/signup">Sign up for free!</a></p>
+      <p class="signup-link">Don’t have an account?
+        <a routerLink="/signup">Sign up for free!</a>
+      </p>
+
     </div>
 
-    <!-- Right side with the visual (could be an illustration or image) -->
-    <div class="visual-side">
-      <img src="assets/images/chanmura.jpg" alt="Visual Representation" class="visual-image">
-    </div>
   </div>
+</div>

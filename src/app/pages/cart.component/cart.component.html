@@ -73,7 +73,7 @@
  -->
 
   <!-- CART SECTION -->
-  <div class="cart-section shadow-lg" *ngIf="cartItems.length > 0">
+  <div class="cart-section shadow-lg w-50" *ngIf="cartItems.length > 0">
 
     <h5 class="fw-bold mb-3">🛒 Your Cart</h5>
 
@@ -95,7 +95,7 @@
         <span>Total</span><span>₹{{ cartTotal }}</span>
       </div>
 
-      <button class="btn btn-success w-100 mt-3" (click)="billSummary.checkout()">Checkout →</button>
+      <button class="btn btn-success mt-3" (click)="billSummary.checkout()" style="width: 30%;">Checkout →</button>
     </div>
 
   </div>

@@ -2,7 +2,7 @@
 <div class="filter-panel shadow-sm fade-slide">
 
   <!-- Search -->
-  <div class="input-group search-box mb-3">
+  <div class="input-group search-box mb-3 w-50">
     <span class="input-group-text bg-light ripple-target">
       <i class="bi bi-search"></i>
     </span>
@@ -125,7 +125,7 @@
     <h3 class="fw-bold mt-3 fade-in">🍽️ Menu Items</h3>
 
     <div class="row g-4 mt-1">
-      <div *ngFor="let item of paginatedItems()" class="col-lg-3 col-md-4 col-sm-6 fade-up">
+      <div *ngFor="let item of paginatedItems()" class="col-3 fade-up">
 
         <div class="card item-card shadow-sm">
 
@@ -173,8 +173,8 @@
 
   <!-- Floating Cart -->
   <div class="cart-float pop-in" *ngIf="cartItemCount > 0">
-    <span class="fw-bold">🛒 {{ cartItemCount }} item(s) in cart</span>
-    <button class="btn btn-success ripple-target" *ngIf="selectedOrder != 'dine'" (click)="viewCart()">View Cart →</button>
+    <span class="fw-bold" style="font-size: 15px;font-weight:700;color: rgb(255, 255, 255);">🛒 {{ cartItemCount }} item(s) in cart</span>
+    <button class="btn ripple-target" style="background-color: #ffffff;" *ngIf="selectedOrder != 'dine'" (click)="viewCart()">View Cart →</button>
     <button class="btn btn-success ripple-target" *ngIf="selectedOrder === 'dine'" (click)="viewKDS()">View KDS →</button>
   </div>
 
